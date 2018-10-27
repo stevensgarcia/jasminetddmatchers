@@ -343,4 +343,31 @@ describe('Matchers Jasmine Playground', () => {
 
    });
 
+  describe('Creating spyes', () => {
+
+    it('Create a spy function', () => {
+      const some = jasmine.createSpy('some');
+      // ACT
+      some('hello');
+      expect(some).toHaveBeenCalled();
+      expect(some).toHaveBeenCalledWith('hello');
+    });
+
+    it('Create an object spy', () => {
+      const someObject = jasmine.createSpyObj('someObject', [
+          'get',
+          'save',
+          'delete',
+          'search'
+        ]);
+
+      // ACT
+      someObject.get();
+      expect(someObject.get).toHaveBeenCalled();
+
+    });
+
+  });
+
+
 });
